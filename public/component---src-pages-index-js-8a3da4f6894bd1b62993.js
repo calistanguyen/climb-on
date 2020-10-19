@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{RXBc:function(e,n,a){"use strict";a.r(n);var t=a("q1tI"),c=a.n(t);a("PGGC");n.default=function(){return c.a.createElement("div",{className:"side-bar"},"hi")}}}]);
+//# sourceMappingURL=component---src-pages-index-js-8a3da4f6894bd1b62993.js.map

@@ -1,0 +1,41 @@
+
+.side-bar{
+    display: flex; 
+    height: 100%;
+    width: 235px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white; 
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+
+    .logo{
+        display: flex;
+        padding-left: 20px;        
+        font-weight: bold; 
+        font-size: 32px; 
+        flex-direction: row;
+        padding-bottom: 50px; 
+        .svg{
+            padding-left: 10px; 
+        }
+    }
+
+    .nav-bar-item{
+        display: flex; 
+        font-size: 20px;
+        align-self: flex-end;
+        // padding-right: 20px; 
+        margin: 10px;  
+
+        &:hover{
+            color: #B287F5;
+        }
+
+    }
+}
