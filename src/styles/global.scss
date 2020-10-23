@@ -6,7 +6,23 @@
     .dashboard{
         display: flex;
         align-self: flex-end;
-        padding-left: 270px;
+        padding-left: 280px;
+        padding-top: 80px; 
+        .log-card {
+            /* Add shadows to create the "card" effect */
+            width: 500px; 
+            height: 300px; 
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            .log-card-pic{
+                width: 100%; 
+            }
+            .log-card-container{
+                padding: 2px 16px;
+            }
+          }
+
+
     }
 
     .side-bar{
