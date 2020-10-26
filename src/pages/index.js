@@ -1,18 +1,45 @@
-import React, { useState } from "react"
-import NavBar from '../components/NavBar'
-import Dashboard from '../components/Dashboard'
-import '../styles/global.scss'
+import React from 'react';
+import 'express';
 
-const App = () => {
-  const [dashState, setDashState] = useState(true)
-  const [climbLogState, setClimbLogState] = useState(false)
+const express = require('express')
+const app = express()
+const user_model = require('../../user_model')
+const port = 8000
+
+app.use(express.json())
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  next();
+});
+
+app.get('/', (req, res) => {
+  user_model.getUsers()
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+    })
+})
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`)
+})
+
+const Home = () => {
+  function getUsers() {
+    fetch('http://localhost:8000')
+      .then(response => {
+        return response.text();
+      })
+  }
   return (
-    <div className='app'>
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet" />
-      <NavBar setDashState={setDashState} setClimbLogState={setClimbLogState} dashState={dashState} climbLogState={climbLogState} />
-      { dashState === true && <Dashboard />}
-    </div>
+
+    < div > {getUsers()}</div >
   );
 }
 
-export default App; 
+export default Home; 

@@ -83,7 +83,6 @@ function socketIo() {
 
         socket.on(`disconnect`, () => {
           console.warn(`[socket.io] Disconnected from dev server.`);
-          socket.close();
         });
       } catch (err) {
         console.error(`Could not connect to socket.io on dev server.`);

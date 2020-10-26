@@ -5,6 +5,18 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [`gatsby-plugin-sass`],
-}
+  /* ... */
+  plugins: [
+    /* ... */
+    `gatsby-plugin-sass`,
+
+    {
+      resolve: "gatsby-source-pg",
+      options: {
+        connectionString: "postgres:///climb_on",
+        schema: "public",
+        refetchInterval: 60, // Refetch data every 60 seconds
+      },
+    },
+  ],
+};
