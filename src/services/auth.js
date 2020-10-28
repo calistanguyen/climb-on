@@ -5,8 +5,16 @@ export const getUser = () =>
     : {}
 const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
+
+export function checkUser(username, password) { //need to implement with queries
+  if (username === 'john' && password === 'pass') {
+    return true;
+  }
+  return false;
+}
+
 export const handleLogin = ({ username, password }) => {
-  if (username === `john` && password === `pass`) {
+  if (checkUser(username, password)) {
     return setUser({
       username: `john`,
       name: `Johnny`,
