@@ -18,7 +18,7 @@ export default function socketIo() {
       try {
         // force websocket as transport
         socket = io({
-          transports: [`websocket`],
+          transports: [process.env.GATSBY_SOCKET_IO_DEFAULT_TRANSPORT],
         })
 
         // when websocket fails, we'll try polling
@@ -77,7 +77,6 @@ export default function socketIo() {
         // errors within the console, such as when exiting the develop process.
         socket.on(`disconnect`, () => {
           console.warn(`[socket.io] Disconnected from dev server.`)
-          socket.close()
         })
       } catch (err) {
         console.error(`Could not connect to socket.io on dev server.`)
