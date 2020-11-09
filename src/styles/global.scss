@@ -7,18 +7,66 @@
         display: flex;
         align-self: flex-end;
         padding-left: 280px;
-        padding-top: 80px; 
+        flex-direction: column;
+        .greeting{
+            font-size: 32px; 
+            padding-top: 10px; 
+            padding-bottom: 20px; 
+        }
+
         .log-card {
             /* Add shadows to create the "card" effect */
             width: 500px; 
-            height: 300px; 
+            height: 275px; 
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
             .log-card-pic{
-                width: 100%; 
+                width:500px;
+                height:200px;
+                object-fit: cover;
+
             }
             .log-card-container{
                 padding: 2px 16px;
+            }
+            .header{
+                font-weight: bold; 
+            }
+            .buttons{
+                display: flex;
+                flex-direction: row; 
+                margin-top: 10px;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+                .next{
+                    justify-content: center;
+                    color: white; 
+                    display: flex;
+                    height: 25px; 
+                    // font-weight:bold; 
+                    margin-left: 200px; 
+                    width: 300px; 
+                    background-color: #B287F5;
+                    cursor:pointer;
+                    -webkit-border-radius: 2px;
+                    border-radius: 15px; 
+                    padding-top: 5px;
+                
+                }
+                .prev{
+                    padding-top: 5px;
+                    justify-content: center;
+                    display: flex;
+                    width: 300px; 
+                    text-align: center;
+                    background-color: #B287F5;
+                    cursor:pointer;
+                    -webkit-border-radius: 2px;
+                    border-radius: 15px; 
+                    color: white; 
+    
+                    // font-weight:bold; 
+                }
             }
           }
 

@@ -6,9 +6,11 @@ import { getUser } from '../services/auth';
 const Dashboard = () => {
     return (
         <div className="dashboard">
-            <div>Hello, {getUser().firstName}!</div>
-            <LogCard />
-        </div>
+            <div className='greeting'> Hello, {getUser().firstName}!</div>
+            <div className='row-one'>
+                <LogCard />
+            </div>
+        </div >
     );
 }
 
