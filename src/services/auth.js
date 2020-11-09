@@ -1,5 +1,3 @@
-import React from 'react'
-import { StaticQuery, graphql } from "gatsby";
 import { request, gql } from 'graphql-request'
 
 
@@ -20,7 +18,6 @@ export function isResolved(x) {
 }
 
 export async function checkUser(username, password) {
-  // //need to implement with queries
   setUser({})
   const query = gql`
     query {
@@ -31,6 +28,7 @@ export async function checkUser(username, password) {
         nodes {
           firstName
           lastName
+          userId
         }
       }
     }`
@@ -43,7 +41,10 @@ export async function checkUser(username, password) {
     } else {
       console.log('user exists!')
       setUser({
-        username: { username },
+        firstName: data.allUsers.nodes[0].firstName,
+        lastName: data.allUsers.nodes[0].lastName, 
+        id: data.allUsers.nodes[0].userId, 
+
       })
       isResolved(true)
     }

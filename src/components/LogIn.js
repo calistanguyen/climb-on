@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Caribiner from '../imgs/Carabiner';
-import { navigate, graphql } from "gatsby"
-import { handleLogin, isLoggedIn, checkUser, resolved, isResolved } from "../services/auth"
-import { check } from 'prettier';
+import { navigate} from "gatsby"
+import { handleLogin, checkUser, getUser, resolved} from "../services/auth"
+
 const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -29,19 +29,10 @@ const LogIn = () => {
                 <form amethod="post"
                     onSubmit={event => {
                         handleSubmit(event)
-                        // console.log('----checkuser----', checkUser(username, password))
-                        checkUser(username, password)
-                        console.log('----resolved----', resolved)
-                        // if (resolved) {
-
-                        //     navigate(`/dash`)
-                        // }
-                        // else {
-                        //     alert('Wrong username or password')
-                        // }
                         checkUser(username, password).then(auth => {
-                            if (auth) {
+                            if (resolved) {
                                 navigate('/dash')
+                                console.log('---user----', getUser()); 
                             }
                             else {
                                 alert('Wrong username or password')
