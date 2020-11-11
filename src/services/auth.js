@@ -1,6 +1,5 @@
 import { request, gql } from 'graphql-request'
 
-
 export const isBrowser = () => typeof window !== "undefined"
 
 export const getUser = () =>
@@ -42,8 +41,8 @@ export async function checkUser(username, password) {
       console.log('user exists!')
       setUser({
         firstName: data.allUsers.nodes[0].firstName,
-        lastName: data.allUsers.nodes[0].lastName, 
-        id: data.allUsers.nodes[0].userId, 
+        lastName: data.allUsers.nodes[0].lastName,
+        id: data.allUsers.nodes[0].userId,
 
       })
       isResolved(true)

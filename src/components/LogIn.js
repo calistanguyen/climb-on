@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Caribiner from '../imgs/Carabiner';
-import { navigate} from "gatsby"
-import { handleLogin, checkUser, getUser, resolved} from "../services/auth"
+import { navigate } from "gatsby"
+import { handleLogin, checkUser, getUser, resolved } from "../services/auth"
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
@@ -32,7 +32,7 @@ const LogIn = () => {
                         checkUser(username, password).then(auth => {
                             if (resolved) {
                                 navigate('/dash')
-                                console.log('---user----', getUser()); 
+                                console.log('---user----', getUser());
                             }
                             else {
                                 alert('Wrong username or password')
@@ -47,12 +47,12 @@ const LogIn = () => {
                         </div>
                     </div>
                     <div>
-                        <label for="fname" className="username">Username</label>
+                        <label htmlFor="fname" className="username">Username</label>
                         <br></br>
                         <input type="text" id="username" name="uname" onChange={handleUsername} />
                     </div>
                     <div>
-                        <label for="lname">Password</label>
+                        <label htmlFor="lname">Password</label>
                         <br></br>
                         <input type="password" id="password" name="pword" onChange={handlePassword} />
                     </div>
