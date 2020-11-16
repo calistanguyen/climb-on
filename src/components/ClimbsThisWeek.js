@@ -11,7 +11,6 @@ function setNumClimbsWeek(obj) {
     var last = first + 6;
     var num = 0;
     for (var i in obj.allClimbs.nodes) {
-        console.log('---date---', obj.allClimbs.nodes[i].date)
         var date = obj.allClimbs.nodes[i].date.split('-');
         if (date[2] >= first && date[2] <= last) {
             num += 1;

@@ -13,11 +13,9 @@ const LogIn = () => {
     }
 
     const handlePassword = event => {
-        console.log('---password---', String(event.target.value))
         setPassword(event.target.value);
     }
     const handleUsername = event => {
-        console.log('---username---', String(event.target.value))
         setUsername(event.target.value);
     }
 
@@ -32,7 +30,6 @@ const LogIn = () => {
                         checkUser(username, password).then(auth => {
                             if (resolved) {
                                 navigate('/dash')
-                                console.log('---user----', getUser());
                             }
                             else {
                                 alert('Wrong username or password')
