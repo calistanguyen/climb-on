@@ -145,6 +145,108 @@
 
     }
 
+    .edit-log{
+        display: flex;
+        flex-direction: column;
+        margin-left: 400px; 
+        select{
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header{
+            font-size: 32px; 
+            padding-top: 10px; 
+            padding-bottom: 20px; 
+        }
+        .type{
+            display: flex; 
+            margin-bottom: 20px; 
+
+            .type-label{
+                font-weight: bold; 
+                margin-bottom: 5px; 
+                
+            }
+        }
+
+        .level-and-tries{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px; 
+            .level{
+                display: flex; 
+                .level-label{
+                    font-weight: bold; 
+                    margin-right: 10px; 
+    
+                }
+            }
+
+            .tries{
+                margin-left: 20px; 
+                display: flex; 
+                .tries-label{
+                    margin-right: 10px; 
+                    font-weight: bold; 
+                }
+            }
+        }
+        .completed-and-date{
+            display: flex; 
+            flex-direction: row; 
+            margin-bottom: 20px;
+            .completed{
+                display: flex; 
+                margin-right: 20px; 
+                flex-direction: row;
+                .completed-label{
+                    margin-right: 10px; 
+                    font-weight:bold; 
+                }
+            }
+            .date{
+                display: flex; 
+                .date-label{
+                    margin-right: 10px;
+                    font-weight: bold; 
+                }
+                input[type=date]{
+                    font-family: 'Montserrat', sans-serif;
+                }
+            }
+
+        }
+
+        .user-notes{
+            .notes-label{
+                font-weight: bold; 
+            }
+            textarea{  
+                font-family: 'Montserrat', sans-serif;
+                font-size: 12px; 
+                width: 100%; 
+                height: 50px;   
+            }
+            
+        }
+        input[type=submit] {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold; 
+            color: white;
+            margin-top: 10px;
+            padding:5px 15px; 
+            background: #B287F5; 
+            &:hover{
+                background-color: #cebceb;
+            }
+            width: 100%;
+            border:0 none;
+            cursor:pointer;
+            -webkit-border-radius: 2px;
+            border-radius: 15px; 
+        }
+
+    }
+
     .side-bar{
         display: flex; 
         height: 100%;
@@ -176,7 +278,6 @@
             font-size: 20px;
             cursor:pointer;
             align-self: flex-end;
-            // padding-right: 20px; 
             margin: 10px;  
             color: #B287F5; 
 
@@ -191,7 +292,6 @@
             cursor:pointer;
             font-size: 20px;
             align-self: flex-end;
-            // padding-right: 20px; 
             margin: 10px;   
 
             &:hover{
