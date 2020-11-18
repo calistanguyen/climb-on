@@ -1,11 +1,10 @@
 import React from 'react';
 import LogCard from './LogCard';
 import StatsTable from './StatsTable';
-import { StaticQuery, graphql } from "gatsby"
 import { getUser } from '../services/auth';
 import ClimbsThisWeek from './ClimbsThisWeek';
 
-const Dashboard = () => {
+const Dashboard = () => { //dashboard component that holds different card components –– LogCard component, ClimbsThisWeek component, and StatsTable component
     return (
         <div className="dashboard">
             <div className='greeting'> Hello, {getUser().firstName}!</div>
