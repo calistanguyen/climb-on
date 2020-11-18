@@ -6,7 +6,8 @@ Front end:
 React JS and SCSS
 
 Back end: 
-Currently plan on integrating PostgresSQL with ReactJS using Postgraphile and GraphQL
+Database: PostgresSql
+Integrated with my application using Graphql and Postgraphile
 
 ## How to Setup Working Environment
 
