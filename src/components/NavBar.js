@@ -6,6 +6,7 @@ const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, view
 
   function clickDash() { //these functions handle the state of the navbar and what nav items have been clicked
     setClimbLogState(false)
+    setDashState(true)
 
   }
 
