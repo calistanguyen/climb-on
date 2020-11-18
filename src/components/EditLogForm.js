@@ -6,7 +6,7 @@ const triesArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const topLeadLevels = ["5.5", "5.6", "5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13"]
 const boulderLevels = ["v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9"]
 
-async function mutation(userId, type, level, userNotes, tries, completed, date) {
+async function mutation(userId, type, level, userNotes, tries, completed, date) { //graph ql mutation to add to my database of climbs
     const mutation = gql`
     mutation createClimb($input: CreateClimbInput!){
         createClimb(input: $input){
