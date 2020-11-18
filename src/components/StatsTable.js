@@ -6,7 +6,7 @@ var maxTop = 0;
 var maxLead = 0;
 var maxBoulder = "";
 
-function setMaxTop(obj) {
+function setMaxTop(obj) { //my set functions go through the object returned by my query and finds the max completed level of that climbing type
     if (obj.allClimbs.nodes.length !== 0) {
         var max = obj.allClimbs.nodes[0].level.split('.')[1];
         var idx = 0;
@@ -65,7 +65,7 @@ function getMaxBoulder() {
     return maxBoulder;
 }
 
-async function query(type) {//pass in boulder, lead, and top rope as parameters so i dint have to do this 3 more times . 
+async function query(type) {//pass in boulder, lead, and top rope as parameters so i dont have to do this 3 more times –– this query grabs climbing data types, dates, and levels.  A max is determiend if its the highest completed climb in that climbing type
     const query = gql`
       query {
         allClimbs(condition:{
@@ -81,7 +81,7 @@ async function query(type) {//pass in boulder, lead, and top rope as parameters 
         }
       }`
     await request('http://localhost:5000/graphql', query).then((data) => {
-        if (type === "Top Rope") {
+        if (type === "Top Rope") { //depending on the type, we set the max for it
             setMaxTop(data);
         }
         if (type === "Boulder") {
@@ -99,10 +99,10 @@ async function query(type) {//pass in boulder, lead, and top rope as parameters 
 
 
 const StatsTable = () => {
-    const [maxTop, setMaxTop] = useState("–––");
+    const [maxTop, setMaxTop] = useState("–––"); //I use state to keep track of the maxes. A line is used as default state if there are no maxes 
     const [maxLead, setMaxLead] = useState("–––");
     const [maxBoulder, setMaxBoulder] = useState("–––");
-    query("Top Rope").then(auth => {
+    query("Top Rope").then(auth => {//I call query 3x to find max Top Rope, Lead, and Boulder
         if (getMaxTop() != 0) {
             setMaxTop(getMaxTop())
         }

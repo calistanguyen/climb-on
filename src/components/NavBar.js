@@ -2,10 +2,9 @@ import React from "react";
 import Caribiner from "../imgs/Carabiner"
 import NavBarItem from "./NavBarItem"
 
-const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, viewLogState, setViewLogState, editLogState, setEditLogState }) => {
+const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, viewLogState, setViewLogState, editLogState, setEditLogState }) => { //My NavBar component that takes in NavBarItem components 
 
-  function clickDash() {
-    setDashState(true)
+  function clickDash() { //these functions handle the state of the navbar and what nav items have been clicked
     setClimbLogState(false)
 
   }

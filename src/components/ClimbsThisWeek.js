@@ -5,7 +5,7 @@ import { request, gql } from 'graphql-request'
 var numClimbsOverall = 0;
 var numClimbsWeek = 0;
 
-function setNumClimbsWeek(obj) {
+function setNumClimbsWeek(obj) { //function that filters climbs done for the current week and counts them
     var current = new Date;
     var first = current.getDate() - current.getDay();
     var last = first + 6;
@@ -19,7 +19,7 @@ function setNumClimbsWeek(obj) {
     numClimbsWeek = num;
 }
 
-function setNumClimbsOverall(obj) {
+function setNumClimbsOverall(obj) { //counts the number of climbs done overall
     var num = 0;
     for (var prop in obj.allClimbs.nodes) {
         num += 1;
@@ -35,7 +35,7 @@ function getNumClimbsWeek() {
     return numClimbsWeek;
 }
 
-async function query() {
+async function query() { //query to grab climbing data from database
     const query = gql`
       query {
         allClimbs(condition:{

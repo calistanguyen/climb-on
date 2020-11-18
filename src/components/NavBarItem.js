@@ -1,8 +1,6 @@
 import React from 'react';
 
-import PropTypes from 'prop-types'
-
-const NavBarItem = ({ text, active, onClick }) => {
+const NavBarItem = ({ text, active, onClick }) => { //Creates each of the nav bar items. I use SCSS to show if an item is active or not. 
     return (
         <div className={active ? 'nav-bar-item-active' : 'nav-bar-item-inactive'} onClick={onClick} >
             { text}

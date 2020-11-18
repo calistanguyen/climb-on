@@ -3,8 +3,8 @@ import NavBar from './NavBar'
 import Dashboard from './Dashboard'
 import EditLogForm from './EditLogForm'
 
-const ClimbApp = () => {
-  const [dashState, setDashState] = useState(true)
+const ClimbApp = () => { //overarching component that holds the nav bar and each main component of my app
+  const [dashState, setDashState] = useState(true) //using state hooks to determine what is the current component showing -- provides the nav bar functionality
   const [climbLogState, setClimbLogState] = useState(false)
   const [viewLogState, setViewLogState] = useState(false);
   const [editLogState, setEditLogState] = useState(false);

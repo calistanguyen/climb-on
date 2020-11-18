@@ -63,16 +63,17 @@ function setToday() {
     return today
 }
 const today = setToday();
-const EditLogForm = () => {
-    const [topLead, setTopLead] = useState(false)
+
+const EditLogForm = () => { //Componnet that holds the add log form
+    const [topLead, setTopLead] = useState(false) //these two states keep track of what levels need to be displayed in my options. Boulder and TopRope/Lead have 2 different grading systems
     const [boulder, setBoulder] = useState(false)
-    const [type, setType] = useState('')
+    const [type, setType] = useState('')//i use states to hold the different values of the forms needed for my database
     const [level, setLevel] = useState('')
     const [tries, setTries] = useState(0)
     const [completed, setCompleted] = useState(false)
     const [date, setDate] = useState('')
     const [notes, setNotes] = useState('')
-    function setLevelTopLead() {
+    function setLevelTopLead() { //I need
         setTopLead(true)
         setBoulder(false)
     }
@@ -81,7 +82,7 @@ const EditLogForm = () => {
         setTopLead(false)
     }
 
-    const handleType = event => {
+    const handleType = event => { //each of these handler functions take care of the state of each value
         setType(event.target.value);
     }
     const handleLevel = event => {

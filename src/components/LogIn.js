@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Caribiner from '../imgs/Carabiner';
 import { navigate } from "gatsby"
-import { handleLogin, checkUser, getUser, resolved } from "../services/auth"
+import { handleLogin, checkUser, resolved } from "../services/auth"
 
+//this is the component that displays the login to the user
 const LogIn = () => {
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState(''); //states that keep track of the username and password
     const [password, setPassword] = useState('');
 
     const handleSubmit = event => {
@@ -27,7 +28,7 @@ const LogIn = () => {
                 <form amethod="post"
                     onSubmit={event => {
                         handleSubmit(event)
-                        checkUser(username, password).then(auth => {
+                        checkUser(username, password).then(auth => { //this checkUser function runs a query with the username and password provided to check if it exists in the data base
                             if (resolved) {
                                 navigate('/dash')
                             }
@@ -59,15 +60,4 @@ const LogIn = () => {
         </div >
     );
 }
-
-// export const query = graphql`
-// {postgres {
-//     allUsers {
-//         nodes{
-//             firstName
-//             lastName
-//         }
-//     }
-// }}`
-
 export default LogIn;
