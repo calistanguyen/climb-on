@@ -8,8 +8,13 @@ Over the last few weeks, I was able to accomplish all of my goals. First, I had 
 For the next deadline, my goal is to complete the rest of the UI for my application. Currently, my LogCard component that displays the climbs a user did for the week is buggy. I also need to finish implementing the actual climbing log where a user can view all of their climbing history. These changes also include being able to query pictures and how I want to store pictures in my data base. After I complete my UI, my next goal is to then integrate unit testing within my application by using jest. 
 
 ## Screenshots: 
-![Screenshot1](Screen Shot 2020-11-17 at 9.41.50 PM.png)
-![Screenshot2](Screen Shot 2020-11-17 at 9.41.58 PM.png)
-![Screenshot3](Screen Shot 2020-11-17 at 9.42.10 PM.png)
+My login screen
 
-The two screenshots show the functionality of the navigation bar. The dashboard is where the cards for the users appear that will hold different kinds of climbing information. The second screenshot is the climbing log tab which will have a form that will allow users to add to their climbing log or view their climbing log. 
+![Screenshot1](img1.png)
+
+The main dashboard for the user. Currently the card on the top left is a bit buggy. The array that stores the climbing data for the week keeps doubling,
+![Screenshot2](img2.png)
+
+The form where a user can add climbing data. Just need to add the image input. 
+![Screenshot3](img3.png)
+
