@@ -5,30 +5,252 @@
 
     .dashboard{
         display: flex;
-        align-self: flex-end;
-        padding-left: 280px;
-        padding-top: 80px; 
-        .log-card {
-            /* Add shadows to create the "card" effect */
-            width: 500px; 
-            height: 300px; 
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            .log-card-pic{
-                width: 100%; 
+        flex-direction: column;
+        margin-left: 400px; 
+        .greeting{
+            font-size: 32px; 
+            padding-top: 10px; 
+            padding-bottom: 20px; 
+        }
+        .row-one{
+            display: flex;
+            flex-direction: row;
+            .log-card {
+                /* Add shadows to create the "card" effect */
+                width: 500px; 
+                height: 275px; 
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                .log-card-pic{
+                    width:500px;
+                    height:200px;
+                    object-fit: cover;
+    
+                }
+                .log-card-container{
+                    padding: 2px 16px;
+                }
+                .header{
+                    font-weight: bold; 
+                }
+                .buttons{
+                    display: flex;
+                    flex-direction: row; 
+                    margin-top: 10px;
+                    text-align: center;
+                    font-family: 'Montserrat', sans-serif;
+                    .next{
+                        justify-content: center;
+                        color: white; 
+                        display: flex;
+                        height: 25px; 
+                        // font-weight:bold; 
+                        margin-left: 200px; 
+                        width: 300px; 
+                        background-color: #B287F5;
+                        cursor:pointer;
+                        -webkit-border-radius: 2px;
+                        border-radius: 15px; 
+                        padding-top: 5px;
+                        &:hover{
+                            background-color: #cebceb;
+                        }
+                    
+                    }
+                    .prev{
+                        padding-top: 5px;
+                        justify-content: center;
+                        display: flex;
+                        width: 300px; 
+                        text-align: center;
+                        background-color: #B287F5;
+                        cursor:pointer;
+                        -webkit-border-radius: 2px;
+                        border-radius: 15px; 
+                        color: white; 
+                        &:hover{
+                            background-color: #cebceb;
+                        }
+        
+                        // font-weight:bold; 
+                    }
+                }
             }
-            .log-card-container{
-                padding: 2px 16px;
+            .climbs-this-week{
+                margin-left: 50px; 
+                .ctw-card {
+                    /* Add shadows to create the "card" effect */
+                    width: 275px; 
+                    height: 275px; 
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                    transition: 0.3s;
+                    .week{
+                        padding-top: 5px; 
+                        .number{
+                            text-align: center;
+                            font-size: 75px;
+                            font-weight:bold; 
+                        }
+                        .label{
+                            text-align: center;
+                            font-size: 24px; 
+                        }
+                    }
+                    .overall{
+                        margin-top: -5px; 
+                        .number{
+                            text-align: center;
+                            font-size: 75px;
+                            font-weight:bold; 
+                    
+                        }
+                        .label{
+                            text-align: center;
+                            font-size: 24px; 
+                        }
+                    }
+                    hr{
+                        border-top: 1px solid #B287F5;
+                        width: 200px; 
+                      }
+
+                }
+
+
             }
+
           }
 
+          .row-two{
+              display: flex; 
+              flex-direction: row; 
+              margin-top: 75px; 
+              .stats-table{
+                  font-size: 24px; 
+                  display: flex; 
+                  flex-direction: column; 
+                  width: 100%; 
+                  justify-content: center;
+                  text-align: left;
+                  hr{
+                    border-top: 1px solid #B287F5;
+                    width: 100%; 
+                  }
+                  span{
+                      font-weight: bold; 
+                  }
+              }
+          }
+
+
+    }
+
+    .edit-log{
+        display: flex;
+        flex-direction: column;
+        margin-left: 400px; 
+        select{
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header{
+            font-size: 32px; 
+            padding-top: 10px; 
+            padding-bottom: 20px; 
+        }
+        .type{
+            display: flex; 
+            margin-bottom: 20px; 
+
+            .type-label{
+                font-weight: bold; 
+                margin-bottom: 5px; 
+                
+            }
+        }
+
+        .level-and-tries{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px; 
+            .level{
+                display: flex; 
+                .level-label{
+                    font-weight: bold; 
+                    margin-right: 10px; 
+    
+                }
+            }
+
+            .tries{
+                margin-left: 20px; 
+                display: flex; 
+                .tries-label{
+                    margin-right: 10px; 
+                    font-weight: bold; 
+                }
+            }
+        }
+        .completed-and-date{
+            display: flex; 
+            flex-direction: row; 
+            margin-bottom: 20px;
+            .completed{
+                display: flex; 
+                margin-right: 20px; 
+                flex-direction: row;
+                .completed-label{
+                    margin-right: 10px; 
+                    font-weight:bold; 
+                }
+            }
+            .date{
+                display: flex; 
+                .date-label{
+                    margin-right: 10px;
+                    font-weight: bold; 
+                }
+                input[type=date]{
+                    font-family: 'Montserrat', sans-serif;
+                }
+            }
+
+        }
+
+        .user-notes{
+            .notes-label{
+                font-weight: bold; 
+            }
+            textarea{  
+                font-family: 'Montserrat', sans-serif;
+                font-size: 12px; 
+                width: 100%; 
+                height: 50px;   
+            }
+            
+        }
+        input[type=submit] {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold; 
+            color: white;
+            margin-top: 10px;
+            padding:5px 15px; 
+            background: #B287F5; 
+            &:hover{
+                background-color: #cebceb;
+            }
+            width: 100%;
+            border:0 none;
+            cursor:pointer;
+            -webkit-border-radius: 2px;
+            border-radius: 15px; 
+        }
 
     }
 
     .side-bar{
         display: flex; 
         height: 100%;
-        width: 235px;
+        width: 250px;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -41,21 +263,21 @@
 
         .logo{
             display: flex;
-            padding-left: 20px;        
+            padding-left: 30px;        
             font-weight: bold; 
             font-size: 32px; 
             flex-direction: row;
-            padding-bottom: 50px; 
+            padding-bottom: 10px; 
             .svg{
-                padding-left: 10px; 
+                margin-top: -8px; 
             }
         }
 
         .nav-bar-item-active{
             display: flex; 
             font-size: 20px;
+            cursor:pointer;
             align-self: flex-end;
-            // padding-right: 20px; 
             margin: 10px;  
             color: #B287F5; 
 
@@ -67,9 +289,9 @@
 
         .nav-bar-item-inactive{
             display: flex; 
+            cursor:pointer;
             font-size: 20px;
             align-self: flex-end;
-            // padding-right: 20px; 
             margin: 10px;   
 
             &:hover{
@@ -78,4 +300,80 @@
 
         }
     }
+}
+
+.login{
+    font-family: 'Montserrat', sans-serif;
+    display: flex; 
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0; 
+    background-color: #111;
+    padding-top: 20px;
+    color: white; 
+    flex-direction: column;
+    width: 100%;
+    height: 100%; 
+    // margin-left: 210px;
+    // margin-right: 100px;
+    .login-form{
+        display:flex; 
+        flex-direction: column;
+        margin-top: 230px; 
+        align-self: center;
+        .logo{
+            font-size: 40px; 
+            font-weight: bold; 
+            text-align: center;
+            display: flex; 
+            flex-direction: row;
+        }
+    }
+
+    
+
+}
+input[type=submit] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; 
+    color: white;
+    margin-top: 10px;
+    padding:5px 15px; 
+    background: #B287F5; 
+    &:hover{
+        background-color: #cebceb;
+    }
+    width: 225px;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 2px;
+    border-radius: 15px; 
+}
+
+input[type=text] {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    padding:5px 15px; 
+    background: white; 
+    width: 200px;
+    border:0 none;
+    -webkit-border-radius: 2px;
+    border-radius: 5px; 
+}
+
+input[type=password] {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    padding:5px 15px; 
+    background: white; 
+    width: 200px;
+    -webkit-border-radius: 2px;
+    border-radius: 5px; 
+    border:0 none;
 }
