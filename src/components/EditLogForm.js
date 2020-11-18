@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { getUser } from '../services/auth'
 import { gql, request } from 'graphql-request'
 
