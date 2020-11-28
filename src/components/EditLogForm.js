@@ -111,19 +111,22 @@ const EditLogForm = () => { //Componnet that holds the add log form
         console.log('---completed---', completed)
         console.log('---date---', date)
         console.log('---notes---', notes)
+        document.getElementById('edit-form').reset() //resetting form after new submission
     }
 
 
     return (
         <div className="edit-log">
             <div className="header" >Add to Log</div>
-            <form amethod="post"
+            <form amethod="post" id="edit-form"
                 onSubmit={event => {
                     handleSubmit(event)
                     mutation(getUser().id, type, level, notes, tries, completed, date).then(auth => {
                         console.log('added climb')
+                        alert('Climb added successfully!');
                     }).catch(err => {
                         console.log(err)
+                        alert('Climb was not added successfully');
                     })
                 }}>
                 <div className="type">
