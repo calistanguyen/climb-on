@@ -4,6 +4,7 @@ import { request, gql } from 'graphql-request'
 
 
 var climbingItems = {}
+// var currentClimb = {};
 
 function setClimbingItems(data) {
     climbingItems = data;
@@ -20,7 +21,10 @@ async function query() { //query to grab climbing data from database
           nodes {
             type,
             level,
-            date
+            date,
+            completed, 
+            tries,
+            userNotes
           }
         }
       }`
@@ -36,7 +40,9 @@ async function query() { //query to grab climbing data from database
 
 const ViewLog = () => {
     const [ready, setReady] = useState(false)
+    var idx = 0
     const [showCard, setShowCard] = useState(false);
+    const [currentClimb, setCurrentClimb] = useState({})
     query().then(auth => {
         console.log(auth)
         console.log('--climbItems--', climbingItems.allClimbs.nodes)
@@ -46,8 +52,9 @@ const ViewLog = () => {
     }).catch(err => {
         console.log(err);
     })
-    function handleShowCard() {
+    function handleShowCard(climbItem) {
         setShowCard(true);
+        setCurrentClimb(climbItem)
     }
     return (
         <div className='view-log'>
@@ -56,10 +63,10 @@ const ViewLog = () => {
                 <div className='left-split'>
                     {ready && climbingItems.allClimbs.nodes.map((item) =>
                         <>
-                            <div className='climb-item' onClick={handleShowCard}>
+                            <div className='climb-item' onClick={() => handleShowCard(item)}>
                                 <div className='item-header'>
                                     <div className='type'>{item.type}  –– </div>
-                                    <div className='level'>{item.level}</div>
+                                    <div className='level' id='level'>{item.level}</div>
                                 </div>
                                 <div className='date'>{item.date}</div>
                             </div>
@@ -69,7 +76,18 @@ const ViewLog = () => {
                     {!ready && <div> No climbs logged</div>}
                 </div>
                 <div className='right-split'>
-                    {showCard && <div>Card is shown</div>}
+                    {showCard &&
+                        <div className='current-climb'>
+                            <div className='type'> {currentClimb.type} </div>
+                            <img src={require("../imgs/climb.jpg")} alt=" route picture" className='picture' />
+                            <div className='stats'>
+                                <div>{currentClimb.level} </div>
+                                <div>Completed: {currentClimb.completed ? 'Yes' : 'No'}</div>
+                                <div>Tries: {currentClimb.tries} </div>
+                                <div className='notes'> {currentClimb.userNotes}</div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>);

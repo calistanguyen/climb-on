@@ -23,6 +23,7 @@ async function mutation(userId, type, level, userNotes, tries, completed, date) 
         }
       }
   `
+    var isCompleted = completed == "true" ? true : false;
     const variables = {
         input: {
             climb: {
@@ -31,7 +32,7 @@ async function mutation(userId, type, level, userNotes, tries, completed, date) 
                 level: level,
                 userNotes: userNotes,
                 tries: Number(tries),
-                completed: Boolean(completed),
+                completed: isCompleted,
                 date: date
             }
         }
@@ -39,6 +40,7 @@ async function mutation(userId, type, level, userNotes, tries, completed, date) 
 
     await request('http://localhost:5000/graphql', mutation, variables).then((data) => {
         console.log('added to data base')
+        console.log('inputed climb: ', variables)
     },
         error => {
             console.log(error)
@@ -71,7 +73,7 @@ const EditLogForm = () => { //Componnet that holds the add log form
     const [level, setLevel] = useState('')
     const [tries, setTries] = useState(0)
     const [completed, setCompleted] = useState(false)
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState(today)
     const [notes, setNotes] = useState('')
     function setLevelTopLead() { //I need
         setTopLead(true)
@@ -93,6 +95,7 @@ const EditLogForm = () => { //Componnet that holds the add log form
     }
     const handleCompleted = event => {
         setCompleted(event.target.value)
+        console.log('--completed--', completed)
     }
 
     const handleNotes = event => {
@@ -100,6 +103,7 @@ const EditLogForm = () => { //Componnet that holds the add log form
     }
 
     const handleDate = event => {
+        console.log('--date--', date)
         setDate(event.target.value)
     }
 
@@ -178,7 +182,7 @@ const EditLogForm = () => { //Componnet that holds the add log form
                     </div>
                     <div className="date">
                         <div className="date-label">Date: </div>
-                        <input type="date" id="date" name="date" defaultValue={today} onChange={handleDate} />
+                        <input type="date" id="date" name="date" onChange={handleDate} />
                     </div>
                 </div>
 
