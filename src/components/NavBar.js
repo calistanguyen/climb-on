@@ -1,6 +1,8 @@
 import React from "react";
 import Caribiner from "../imgs/Carabiner"
 import NavBarItem from "./NavBarItem"
+import { setUser } from "../services/auth"
+import { navigate } from "gatsby"
 
 const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, viewLogState, setViewLogState, editLogState, setEditLogState }) => { //My NavBar component that takes in NavBarItem components 
 
@@ -22,6 +24,11 @@ const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, view
     setEditLogState(true)
   }
 
+  function handleLogout() {
+    navigate('/');
+    setUser({});
+  }
+
   return (
     <div className='side-bar'>
       <div className='logo'>
@@ -34,6 +41,7 @@ const NavBar = ({ setDashState, setClimbLogState, dashState, climbLogState, view
       <NavBarItem text="Climbing Log" active={climbLogState} onClick={clickClimbLog} />
       {climbLogState == true && <NavBarItem text="View Log" active={viewLogState} onClick={clickClimbLog} />}
       {climbLogState == true && <NavBarItem text="Add to Log" active={editLogState} onClick={clickEditLog} />}
+      <div className='logout' onClick={handleLogout}>Log out</div>
     </div>
   );
 }

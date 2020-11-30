@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import NavBar from './NavBar'
 import Dashboard from './Dashboard'
 import EditLogForm from './EditLogForm'

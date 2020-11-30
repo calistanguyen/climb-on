@@ -21,6 +21,11 @@
                 height: 275px; 
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 transition: 0.3s;
+                .no-climbs{
+                    display: flex; 
+                    margin-left: 125px;
+                    margin-top: 115px; 
+                }
                 .log-card-pic{
                     width:500px;
                     height:200px;
@@ -377,6 +382,17 @@
                 color: #B287F5;
             }
 
+        }
+        .logout{
+            display: flex; 
+            cursor: pointer; 
+            align-self: flex-start; 
+            margin-left: 10px;
+            position: absolute; 
+            bottom: 30px; 
+            &:hover{
+                color: #B287F5;
+            }
         }
     }
 }

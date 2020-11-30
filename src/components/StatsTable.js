@@ -19,6 +19,9 @@ function setMaxTop(obj) { //my set functions go through the object returned by m
         }
         maxTop = obj.allClimbs.nodes[idx].level
     }
+    else {
+        maxTop = 0
+    }
 }
 
 function setMaxLead(obj) {
@@ -34,6 +37,9 @@ function setMaxLead(obj) {
         }
         maxLead = obj.allClimbs.nodes[idx].level
     }
+    else {
+        maxLead = 0
+    }
 }
 
 function setMaxBoulder(obj) {
@@ -48,6 +54,9 @@ function setMaxBoulder(obj) {
             }
         }
         maxBoulder = obj.allClimbs.nodes[idx].level
+    }
+    else {
+        maxBoulder = ""
     }
 
 }
@@ -102,9 +111,13 @@ const StatsTable = () => {
     const [maxTop, setMaxTop] = useState("–––"); //I use state to keep track of the maxes. A line is used as default state if there are no maxes 
     const [maxLead, setMaxLead] = useState("–––");
     const [maxBoulder, setMaxBoulder] = useState("–––");
+
     query("Top Rope").then(auth => {//I call query 3x to find max Top Rope, Lead, and Boulder
         if (getMaxTop() != 0) {
             setMaxTop(getMaxTop())
+        }
+        else {
+            setMaxTop("–––")
         }
     }).catch(err => {
         console.log(err);
@@ -115,14 +128,21 @@ const StatsTable = () => {
         if (getMaxLead() != 0) {
             setMaxLead(getMaxLead())
         }
+        else {
+            setMaxLead("–––")
+        }
     }).catch(err => {
         console.log(err)
 
     })
 
     query("Boulder").then(auth => {
-        if (getMaxBoulder() != 0) {
+        if (getMaxBoulder() != "") {
             setMaxBoulder(getMaxBoulder())
+            console.log('---user----', getUser());
+        }
+        else {
+            setMaxBoulder("–––")
         }
     }).catch(err => {
         console.log(err)

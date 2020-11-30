@@ -8,7 +8,8 @@ var climbingItems = {}
 
 function setClimbingItems(data) {
     climbingItems = data;
-    // console.log('--climbing items---', climbingItems.allClimbs.nodes)
+
+    console.log('--climbing items---')
 }
 
 async function query() { //query to grab climbing data from database
@@ -61,7 +62,7 @@ const ViewLog = () => {
             <div className='header'>Climbing Log </div>
             <div className='log-split'>
                 <div className='left-split'>
-                    {ready && climbingItems.allClimbs.nodes.map((item) =>
+                    {ready && climbingItems.allClimbs.nodes.length !== 0 && climbingItems.allClimbs.nodes.map((item) =>
                         <>
                             <div className='climb-item' onClick={() => handleShowCard(item)}>
                                 <div className='item-header'>
@@ -73,6 +74,11 @@ const ViewLog = () => {
                             <hr />
                         </>
                     )}
+                    {ready && climbingItems.allClimbs.nodes.length === 0 &&
+                        <>
+                            <div> No climbs have been logged yet. </div>
+                        </>
+                    }
                     {!ready && <div> No climbs logged</div>}
                 </div>
                 <div className='right-split'>
