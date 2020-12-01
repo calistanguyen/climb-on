@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getUser } from '../services/auth'
 import { request, gql } from 'graphql-request'
 
@@ -44,6 +44,7 @@ async function query() {
       }`
   await request('http://localhost:5000/graphql', q).then((data) => {
     setClimbingData(data);
+    console.log('climbing data this week: ', climbingData)
 
   },
     error => {
@@ -60,22 +61,27 @@ const LogCard = () => { //this component shows the climbs recorded for this week
 
   //the next and previous function traverse through the array of climbs
   function next() {
-    currIdx < climbingData.length ? setCurrIdx(currIdx + 1) : setCurrIdx(0)
+    currIdx < climbingData.length - 1 ? setCurrIdx(currIdx + 1) : setCurrIdx(0)
+    console.log(currIdx)
   }
 
   function previous() {
-    currIdx >= 0 ? setCurrIdx(currIdx - 1) : setCurrIdx(climbingData.length - 1)
+    currIdx > 0 ? setCurrIdx(currIdx - 1) : setCurrIdx(climbingData.length - 1)
+    console.log(currIdx)
   }
 
-  query().then(auth => {
-    console.log(auth)
-    if (climbingData.length !== 0) {
-      setReady(true)
-    } else { setReady(false) }
+  useEffect(() => {
+    query().then(auth => {
+      console.log(auth)
+      if (climbingData.length !== 0) {
+        setReady(true)
+      } else { setReady(false) }
 
-  }).catch(err => {
-    console.log(err);
-  })
+    }).catch(err => {
+      console.log(err);
+    })
+  }, []);
+
 
   return (
     <>
