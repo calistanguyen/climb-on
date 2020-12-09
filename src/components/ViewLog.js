@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getUser } from '../services/auth'
 import { request, gql } from 'graphql-request'
 
 
 var climbingItems = {}
-// var currentClimb = {};
 
 function setClimbingItems(data) {
     climbingItems = data;
-
-    console.log('--climbing items---')
 }
 
 async function query() { //query to grab climbing data from database
@@ -25,13 +22,13 @@ async function query() { //query to grab climbing data from database
             date,
             completed, 
             tries,
-            userNotes
+            userNotes,
+            imgLink
           }
         }
       }`
     await request('http://localhost:5000/graphql', query).then((data) => {
         setClimbingItems(data)
-        console.log(data)
     },
         error => {
             console.log(error)
@@ -40,19 +37,18 @@ async function query() { //query to grab climbing data from database
 }
 
 const ViewLog = () => {
-    const [ready, setReady] = useState(false)
-    var idx = 0
-    const [showCard, setShowCard] = useState(false);
-    const [currentClimb, setCurrentClimb] = useState({})
-    query().then(auth => {
-        console.log(auth)
-        console.log('--climbItems--', climbingItems.allClimbs.nodes)
-        setReady(true)
-        console.log('--ready--', ready)
+    const [ready, setReady] = useState(false) //state to keep track of when query is finished
+    const [showCard, setShowCard] = useState(false); //state to handle when to show current climb displayed
+    const [currentClimb, setCurrentClimb] = useState({}) //current climb being displayed
+    useEffect(() => {
+        query().then(auth => {
+            console.log(auth)
+            setReady(true)
 
-    }).catch(err => {
-        console.log(err);
-    })
+        }).catch(err => {
+            console.log(err);
+        })
+    }, []);
     function handleShowCard(climbItem) {
         setShowCard(true);
         setCurrentClimb(climbItem)
@@ -85,7 +81,7 @@ const ViewLog = () => {
                     {showCard &&
                         <div className='current-climb'>
                             <div className='type'> {currentClimb.type} </div>
-                            <img src={require("../imgs/climb.jpg")} alt=" route picture" className='picture' />
+                            <img src={currentClimb.imgLink} alt=" route picture" className='picture' />
                             <div className='stats'>
                                 <div>{currentClimb.level} </div>
                                 <div>Completed: {currentClimb.completed ? 'Yes' : 'No'}</div>

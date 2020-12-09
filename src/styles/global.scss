@@ -220,6 +220,16 @@
             }
 
         }
+        .image{
+            display: flex; 
+            flex-direction: row;
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            .img-label{
+                display: flex; 
+                margin-right: 10px; 
+            }
+        }
 
         .user-notes{
             .notes-label{

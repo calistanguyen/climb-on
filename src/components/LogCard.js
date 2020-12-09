@@ -28,7 +28,6 @@ function setClimbingData(obj) { //takes data from query to fill up climbing data
 
 //my query that grabs the data needed for the log card
 async function query() {
-  console.log('--userid--', getUser().id)
   const q = gql`
       query {
         allClimbs(condition:{
@@ -44,7 +43,6 @@ async function query() {
       }`
   await request('http://localhost:5000/graphql', q).then((data) => {
     setClimbingData(data);
-    console.log('climbing data this week: ', climbingData)
 
   },
     error => {
@@ -62,17 +60,14 @@ const LogCard = () => { //this component shows the climbs recorded for this week
   //the next and previous function traverse through the array of climbs
   function next() {
     currIdx < climbingData.length - 1 ? setCurrIdx(currIdx + 1) : setCurrIdx(0)
-    console.log(currIdx)
   }
 
   function previous() {
     currIdx > 0 ? setCurrIdx(currIdx - 1) : setCurrIdx(climbingData.length - 1)
-    console.log(currIdx)
   }
 
-  useEffect(() => {
+  useEffect(() => { //useEffect to ensure query only gets ran when the component is mounted
     query().then(auth => {
-      console.log(auth)
       if (climbingData.length !== 0) {
         setReady(true)
       } else { setReady(false) }
@@ -87,7 +82,7 @@ const LogCard = () => { //this component shows the climbs recorded for this week
     <>
       { ready &&
         <div className='log-card'>
-          <img src={require("../imgs/climb.jpg")} alt=" route picture" className='log-card-pic' />
+          <img src={ready && climbingData[currIdx].img} alt=" route picture" className='log-card-pic' />
           <div className="log-card-container">
             <div className="header">  {ready && climbingData[currIdx].type}  –– {climbingData[currIdx] !== undefined && climbingData[currIdx].level}  </div>
             <div className="buttons">

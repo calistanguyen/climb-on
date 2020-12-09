@@ -139,7 +139,6 @@ const StatsTable = () => {
     query("Boulder").then(auth => {
         if (getMaxBoulder() != "") {
             setMaxBoulder(getMaxBoulder())
-            console.log('---user----', getUser());
         }
         else {
             setMaxBoulder("–––")
