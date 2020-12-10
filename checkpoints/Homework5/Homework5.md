@@ -8,7 +8,9 @@ What I accomplished for this deadline was fixing a lot of the bugs within my app
 If I were to continue working on this project, I would work on implementing an Amazon S3 bucket to store my images and learn how to set up the backend code to create an endpoint to that S3 bucket. 
 
 ## Screenshots: 
+![Screenshot1](img1.png) 
 
 
 
 
+Completed view log component
