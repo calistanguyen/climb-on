@@ -21,6 +21,11 @@
                 height: 275px; 
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 transition: 0.3s;
+                .no-climbs{
+                    display: flex; 
+                    margin-left: 125px;
+                    margin-top: 115px; 
+                }
                 .log-card-pic{
                     width:500px;
                     height:200px;
@@ -215,6 +220,16 @@
             }
 
         }
+        .image{
+            display: flex; 
+            flex-direction: row;
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            .img-label{
+                display: flex; 
+                margin-right: 10px; 
+            }
+        }
 
         .user-notes{
             .notes-label{
@@ -245,6 +260,85 @@
             border-radius: 15px; 
         }
 
+    }
+
+    .view-log{
+        display: flex;
+        margin-left: 400px; 
+        flex-direction: column; 
+        .header{
+            display: flex;
+            font-size: 32px;
+            font-weight: bold;  
+        }
+        .log-split{
+            display: flex; 
+            flex-direction: row; 
+            margin-top: 20px; 
+            .left-split{
+                display: flex; 
+                flex-direction: column; 
+                width: 400px; 
+                .climb-item{ 
+                    // height: 55px; 
+                    display: flex; 
+                    flex-direction: column; 
+                    height: 100%; 
+                    .item-header{
+                        display: flex; 
+                        flex-direction: row; 
+                        font-size: 18px; 
+                        .level{
+                            margin-left: 10px; 
+                        }
+                    }
+                    .date{
+                        font-size: 15px;
+                        margin-top: 5px; 
+                        color: grey;  
+                    }
+                    &:hover{
+                        color: #B287F5;
+                        cursor: pointer; 
+                    }
+                }
+                hr{
+                    border-top: 1px solid #B287F5;
+                    width: 100%; 
+                  }
+                
+            }
+            .right-split{
+                display: flex;
+                margin-left: 70px; 
+                flex-direction: column;
+                .current-climb{
+                    display: flex; 
+                    flex-direction: column;
+                    position: fixed; 
+                    .type{
+                        display: flex; 
+                        font-size: 32px; 
+                        font-weight: bold; 
+                    }
+                    .picture{
+                        display: flex; 
+                        width:400px;
+                        height:200px;
+                        object-fit: cover;
+                    }
+                    .stats{
+                        margin-top: 10px; 
+                        font-size: 22px; 
+                    }
+                    .notes{
+                        max-width: 400px;
+                        color: gray;
+                    }
+                }
+                
+            }
+        }
     }
 
     .side-bar{
@@ -298,6 +392,17 @@
                 color: #B287F5;
             }
 
+        }
+        .logout{
+            display: flex; 
+            cursor: pointer; 
+            align-self: flex-start; 
+            margin-left: 10px;
+            position: absolute; 
+            bottom: 30px; 
+            &:hover{
+                color: #B287F5;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ const triesArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const topLeadLevels = ["5.5", "5.6", "5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13"]
 const boulderLevels = ["v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9"]
 
-async function mutation(userId, type, level, userNotes, tries, completed, date) { //graph ql mutation to add to my database of climbs
+async function mutation(userId, type, level, userNotes, tries, completed, date, imgLink) { //graph ql mutation to add to my database of climbs
     const mutation = gql`
     mutation createClimb($input: CreateClimbInput!){
         createClimb(input: $input){
@@ -23,6 +23,7 @@ async function mutation(userId, type, level, userNotes, tries, completed, date) 
         }
       }
   `
+    var isCompleted = completed == "true" ? true : false;
     const variables = {
         input: {
             climb: {
@@ -31,14 +32,14 @@ async function mutation(userId, type, level, userNotes, tries, completed, date) 
                 level: level,
                 userNotes: userNotes,
                 tries: Number(tries),
-                completed: Boolean(completed),
-                date: date
+                completed: isCompleted,
+                date: date,
+                imgLink: imgLink
             }
         }
     }
 
     await request('http://localhost:5000/graphql', mutation, variables).then((data) => {
-        console.log('added to data base')
     },
         error => {
             console.log(error)
@@ -71,9 +72,10 @@ const EditLogForm = () => { //Componnet that holds the add log form
     const [level, setLevel] = useState('')
     const [tries, setTries] = useState(0)
     const [completed, setCompleted] = useState(false)
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState(today)
     const [notes, setNotes] = useState('')
-    function setLevelTopLead() { //I need
+    const [imgUrl, setImgUrl] = useState('')
+    function setLevelTopLead() { //these states keep track of needing boulder levels or toprope/lead levels
         setTopLead(true)
         setBoulder(false)
     }
@@ -103,25 +105,27 @@ const EditLogForm = () => { //Componnet that holds the add log form
         setDate(event.target.value)
     }
 
+    const handleImage = event => {
+        var file = document.querySelector('input[type=file]')['files'][0];
+        const objectURL = URL.createObjectURL(file) //storing object url to save photo
+        setImgUrl(objectURL)
+    }
+
+
+
     const handleSubmit = event => {
         event.preventDefault();
-        console.log('---type---', type)
-        console.log('---level---', level)
-        console.log('---tries---', tries)
-        console.log('---completed---', completed)
-        console.log('---date---', date)
-        console.log('---notes---', notes)
+        document.getElementById('edit-form').reset() //resetting form after new submission
     }
 
 
     return (
         <div className="edit-log">
             <div className="header" >Add to Log</div>
-            <form amethod="post"
+            <form method="post" id="edit-form"
                 onSubmit={event => {
                     handleSubmit(event)
-                    mutation(getUser().id, type, level, notes, tries, completed, date).then(auth => {
-                        console.log('added climb')
+                    mutation(getUser().id, type, level, notes, tries, completed, date, imgUrl).then(auth => {
                     }).catch(err => {
                         console.log(err)
                     })
@@ -175,8 +179,12 @@ const EditLogForm = () => { //Componnet that holds the add log form
                     </div>
                     <div className="date">
                         <div className="date-label">Date: </div>
-                        <input type="date" id="date" name="date" defaultValue={today} onChange={handleDate} />
+                        <input type="date" id="date" name="date" onChange={handleDate} />
                     </div>
+                </div>
+                <div className="image">
+                    <div className="img-label">Image: </div>
+                    <input type="file" name="file" id='img' onChange={handleImage} />
                 </div>
 
                 <div className="user-notes">
@@ -184,7 +192,7 @@ const EditLogForm = () => { //Componnet that holds the add log form
                     <textarea name="user_notes" rows="10" cols="30" defaultValue="Add notes about the climb here" onChange={handleNotes} />
                 </div>
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" name="submit" />
             </form>
         </div>
     );

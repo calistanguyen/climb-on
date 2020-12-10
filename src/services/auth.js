@@ -7,7 +7,7 @@ export const getUser = () =>
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
 
-const setUser = user =>
+export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
 export var resolved = false
